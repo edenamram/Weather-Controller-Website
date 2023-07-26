@@ -4,10 +4,13 @@
     left: 1%;
     color: #fff;
     font: 125% sans-serif;
-    background-image: url("https://images.unsplash.com/photo-1559963110-71b394e7494d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=675&q=80");
+    // background-image: url("https://images.unsplash.com/photo-1559963110-71b394e7494d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=675&q=80");
     background-size: cover;
     background-position: center;
 }
+
+// https://app1.weatherwidget.org/skin/img/bg/clear_night.jpg
+
 
 .mat-elevation-z5::before {
     content: "";
@@ -51,6 +54,14 @@ mat-card-subtitle {
     font-weight: bold;
     font-weight: bold;
     position: relative;
+}
+
+.flex-row {
+    position: absolute;
+    bottom: 25px;
+    left: 16px;
+    font-size: 23px;
+    line-height: 1.2;
 }
 
 // :host {
