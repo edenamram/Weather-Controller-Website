@@ -18,6 +18,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatCardModule } from '@angular/material/card';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { ReactiveFormsModule } from '@angular/forms';
+import { DetailWeatherComponent } from './components/detail-weather/detail-weather.component';
 
 
 
@@ -27,6 +28,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     HeaderComponent,
     FavoritesComponent,
     MainScreenComponent,
+    DetailWeatherComponent,
   ],
   imports: [
     BrowserModule,

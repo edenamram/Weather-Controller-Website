@@ -51,6 +51,7 @@ export class MainScreenComponent implements OnInit {
     console.log(this.filteredCities)
     const selectedCity = this.cityControl.value;
     if (this.cityControl.value.trim() !== '') {
+      console.log(this.cityControl.value);  
       this.weatherService.getAutoComplete(selectedCity).subscribe(
         (data: any) => {
           if (data.length > 0) {

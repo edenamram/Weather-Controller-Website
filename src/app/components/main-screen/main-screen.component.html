@@ -11,7 +11,10 @@
     </mat-form-field>
 </mat-card>
 
-<mat-card class="mat-elevation-z5 w3-quarter" *ngIf="currentWeather" [style.background-image]="'url(' + getBackgroundImageUrl() + ')'">
+<app-detail-weather *ngIf="currentWeather" [currentWeather]="currentWeather"
+    [cityControl]="cityControl"></app-detail-weather>
+
+<!-- <mat-card class="mat-elevation-z5 w3-quarter" *ngIf="currentWeather" [style.background-image]="'url(' + getBackgroundImageUrl() + ')'">
     <mat-card-header>
         <mat-card-title>{{dateNameToday}}</mat-card-title>
         <mat-card-subtitle>{{ currentWeather.LocalObservationDateTime | date:'dd MMM yyyy' }}</mat-card-subtitle>
@@ -25,4 +28,4 @@
             </div>
         </div>
     </mat-card-header>
-</mat-card>
+</mat-card> -->
