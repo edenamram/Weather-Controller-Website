@@ -15,43 +15,47 @@ export class MainScreenComponent implements OnInit {
   fiveDayForecast: any;
   cityControl = new FormControl();
   filteredCities!: Observable<any[]>;
-  dateNameToday:string = '';
+  dateNameToday: string = '';
+  loading: boolean = false;
+  showSearchForm: boolean = false;
 
   constructor(private weatherService: WeatherService,
     private snackBar: MatSnackBar,
     private ipInfoService: IpInfoService) { }
 
   ngOnInit(): void {
-    this.ipInfoService.getIpInfo().subscribe(
-      (data: any) => {
-        console.log(data);
-        this.cityControl.setValue(data.city);
-      },
-      (error) => {
-        this.cityControl.setValue('TEL AVIV');
-      }
-    );
-    this.filteredCities = this.cityControl.valueChanges
-      .pipe(
-        filter(res => {
-          return res !== null
-        }),
-        distinctUntilChanged(),
-        debounceTime(1000),
-        switchMap(value => this.weatherService.getAutoComplete(value.toLowerCase()).pipe(
-          map((res: any) => {
-            return res
-          }
-          ))
-        )
-      )
+    this.checkIpInfo();
+    this.setupAutocomplete();
   }
 
+  setupAutocomplete() {
+   this.filteredCities = this.cityControl.valueChanges.pipe(
+      filter(res => res !== null && res.trim() !== ''),
+      distinctUntilChanged(),
+      debounceTime(1000),
+      switchMap(value => this.weatherService.getAutoComplete(value.toLowerCase()).pipe(
+        map((res: any) => res)
+      ))
+    );
+  }
+
+  checkIpInfo() {
+    this.ipInfoService.getIpInfo().subscribe(
+      (data: any) => {
+        this.cityControl.setValue(data.city);
+        this.searchWeather();
+      },
+      (error) => {
+        this.cityControl.setValue('Tel Aviv');
+        this.searchWeather();
+      }
+    );
+  }
+
+
   searchWeather(): void {
-    console.log(this.filteredCities)
     const selectedCity = this.cityControl.value;
-    if (this.cityControl.value.trim() !== '') {
-      console.log(this.cityControl.value);  
+    if (selectedCity.trim() !== '') {
       this.weatherService.getAutoComplete(selectedCity).subscribe(
         (data: any) => {
           if (data.length > 0) {
@@ -59,7 +63,6 @@ export class MainScreenComponent implements OnInit {
             this.weatherService.getCurrentWeather(locationKey).subscribe(
               (weatherData: any) => {
                 this.currentWeather = weatherData[0];
-                this.getDayName();
               }
             );
             this.weatherService.getFiveDayForecast(locationKey).subscribe(
@@ -78,21 +81,11 @@ export class MainScreenComponent implements OnInit {
     }
   }
 
-  getDayName(date = new Date(), locale = 'en-US'){
-    this.dateNameToday = date.toLocaleDateString(locale, {weekday: 'long'});
+  searchWeatherByLocation() {
+    this.showSearchForm = false;
+    this.searchWeather();
   }
 
-  getBackgroundImageUrl(): string {
-    const currentTime = new Date().getHours();
-
-    // Check if the current time is between 6:00 and 18:00
-    if (currentTime >= 6 && currentTime < 18) {
-      return 'https://images.unsplash.com/photo-1559963110-71b394e7494d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=675&q=80';
-    } else {
-      return 'https://app1.weatherwidget.org/skin/img/bg/clear_night.jpg';
-    }
-  }
-  
   private showSnackbar(message: string) {
     this.snackBar.open(message, 'Close', {
       duration: 5000,

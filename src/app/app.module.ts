@@ -19,6 +19,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DetailWeatherComponent } from './components/detail-weather/detail-weather.component';
+import { WeatherCardComponent } from './components/weather-card/weather-card.component';
 
 
 
@@ -29,6 +30,7 @@ import { DetailWeatherComponent } from './components/detail-weather/detail-weath
     FavoritesComponent,
     MainScreenComponent,
     DetailWeatherComponent,
+    WeatherCardComponent,
   ],
   imports: [
     BrowserModule,

@@ -13,6 +13,7 @@ export class DetailWeatherComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    this.getDayName();
   }
 
   getDayName(date = new Date(), locale = 'en-US') {
