@@ -63,6 +63,7 @@ export class MainScreenComponent implements OnInit {
             this.weatherService.getCurrentWeather(locationKey).subscribe(
               (weatherData: any) => {
                 this.currentWeather = weatherData[0];
+                this.showSearchForm = false;
               }
             );
             this.weatherService.getFiveDayForecast(locationKey).subscribe(
@@ -81,10 +82,6 @@ export class MainScreenComponent implements OnInit {
     }
   }
 
-  searchWeatherByLocation() {
-    this.showSearchForm = false;
-    this.searchWeather();
-  }
 
   private showSnackbar(message: string) {
     this.snackBar.open(message, 'Close', {
