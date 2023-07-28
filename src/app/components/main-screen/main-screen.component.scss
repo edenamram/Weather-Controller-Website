@@ -1,8 +1,8 @@
 .five-day-forecast-card {
-    background-color:#22313f;
+    background-color: #22313f;
     border-radius: 20px;
     float: left;
-    width: 50.99999%;
+    width: 50%;
     height: 350px;
 }
 
@@ -13,7 +13,6 @@
 }
 
 .weather-card {
-    // flex: 0 0 calc(20% - 20px);
     margin: 10px;
 }
 
@@ -41,5 +40,70 @@
 }
 
 h2 {
+    color: white;
+}
+
+.changeLocationButton {
+    background-image: linear-gradient(to right, rgba(0, 255, 255, 2), rgba(255, 0, 255, 5));
+    color: #fff;
+    font-size: 20px;
+    border-radius: 6px;
+    width: 22%;
+    height: 36px;
+    // margin-top: 8%;
+}
+
+.page-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.card-container {
+    text-align: center;
+}
+
+.container {
+    margin: 0% 0% 1% 0%;
+    width: 100%;
+    background: #3f51b5;
+    padding: 0%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container .search-field {
+    padding-left: 5%;
+    ;
+    color: white;
+}
+
+.mat-form-field {
+    font-size: 18px;
+}
+
+
+.search-container {
+    width: 100%;
+    max-width: 500px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.search-field {
+    flex: 1;
+    margin-right: 10px;
+}
+
+:host ::ng-deep .mat-form-field-underline {
+    background-color: white !important;
+}
+
+h1 {
+    margin: 0%;
     color: white;
 }
