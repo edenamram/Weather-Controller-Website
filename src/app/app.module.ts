@@ -18,9 +18,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatCardModule } from '@angular/material/card';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { ReactiveFormsModule } from '@angular/forms';
-import { DetailWeatherComponent } from './components/detail-weather/detail-weather.component';
-import { WeatherCardComponent } from './components/weather-card/weather-card.component';
-
+import { DetailedWeatherComponent } from './components/detailed-weather/detailed-weather.component';
+import { WeatherCardsComponent } from './components/weather-cards/weather-cards.component';
 
 
 @NgModule({
@@ -29,8 +28,8 @@ import { WeatherCardComponent } from './components/weather-card/weather-card.com
     HeaderComponent,
     FavoritesComponent,
     MainScreenComponent,
-    DetailWeatherComponent,
-    WeatherCardComponent,
+    DetailedWeatherComponent,
+    WeatherCardsComponent
   ],
   imports: [
     BrowserModule,

@@ -16,9 +16,10 @@
 
 
     <div class="card-container">
-        <app-detail-weather [currentWeather]="currentWeather" [cityControl]="cityControl"></app-detail-weather>
+        <app-detailed-weather [currentWeather]="currentWeather" [cityControl]="cityControl"></app-detailed-weather>
+        <app-weather-cards [fiveDayForecast]="fiveDayForecast"></app-weather-cards>
 
-        <mat-card class="five-day-forecast-card center">
+        <!-- <mat-card class="five-day-forecast-card center">
             <mat-card-content>
                 <h2>Five-Day Forecast</h2>
                 <div class="five-day-forecast-container">
@@ -36,6 +37,6 @@
                     </mat-card>
                 </div>
             </mat-card-content>
-        </mat-card>
+        </mat-card> -->
     </div>
 </div>

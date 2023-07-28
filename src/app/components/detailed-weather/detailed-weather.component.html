@@ -1,5 +1,5 @@
-
-<mat-card class="mat-elevation-z5 w3-quarter" *ngIf="currentWeather" [style.background-image]="'url(' + getBackgroundImageUrl() + ')'">
+<mat-card class="mat-elevation-z5 w3-quarter" *ngIf="currentWeather"
+    [style.background-image]="'url(' + getBackgroundImageUrl() + ')'">
     <mat-card-header>
         <mat-card-title>{{dateNameToday}}</mat-card-title>
         <mat-card-subtitle>{{ currentWeather.LocalObservationDateTime | date:'dd MMM yyyy' }}</mat-card-subtitle>

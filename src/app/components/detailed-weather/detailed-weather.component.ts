@@ -1,11 +1,12 @@
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-detail-weather',
-  templateUrl: './detail-weather.component.html',
-  styleUrls: ['./detail-weather.component.scss']
+  selector: 'app-detailed-weather',
+  templateUrl: './detailed-weather.component.html',
+  styleUrls: ['./detailed-weather.component.scss']
 })
-export class DetailWeatherComponent implements OnInit {
+export class DetailedWeatherComponent implements OnInit {
+
   dateNameToday: string = '';
   @Input() currentWeather: any;
   @Input() cityControl: any;
