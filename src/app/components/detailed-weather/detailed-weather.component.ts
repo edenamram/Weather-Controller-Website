@@ -1,4 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { IWishlistItem } from 'src/app/models/IWeatherItem.models';
+import { WishlistService } from 'src/app/services/wishlist.service';
 
 @Component({
   selector: 'app-detailed-weather',
@@ -11,7 +13,7 @@ export class DetailedWeatherComponent implements OnInit {
   @Input() selectedCity: any;
   isFavorite: boolean = false;
   dateNameToday: string = '';
-  constructor() { }
+  constructor(private wishlistService: WishlistService) { }
 
   ngOnInit(): void {
     this.getDayName();
@@ -23,6 +25,16 @@ export class DetailedWeatherComponent implements OnInit {
 
   toggleFavorite(): void {
     this.isFavorite = !this.isFavorite;
+    const newFavorite: IWishlistItem = {
+      id: this.currentWeather.EpochTime, name: this.selectedCity, currentWeather: this.
+        currentWeather.WeatherText, tempWeather: this.currentWeather.Temperature.Metric.Value
+    }
+    if (this.isFavorite) {
+      this.wishlistService.addItem(newFavorite)
+    }
+    else {
+      this.wishlistService.deleteItem(this.currentWeather.EpochTime)
+    }
   }
 
 

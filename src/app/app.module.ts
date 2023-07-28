@@ -20,6 +20,7 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DetailedWeatherComponent } from './components/detailed-weather/detailed-weather.component';
 import { WeatherCardsComponent } from './components/weather-cards/weather-cards.component';
+import {MatTableModule} from '@angular/material/table';
 
 
 @NgModule({
@@ -47,7 +48,8 @@ import { WeatherCardsComponent } from './components/weather-cards/weather-cards.
     MatSnackBarModule,
     MatCardModule,
     MatAutocompleteModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]

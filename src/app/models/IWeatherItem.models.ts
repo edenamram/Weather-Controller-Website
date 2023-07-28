@@ -1,5 +1,6 @@
 export interface IWishlistItem {
-    id: string;
-    name: string;
-    currentWeather: string;
-  }
+  id: string;
+  name: string;
+  currentWeather: string;
+  tempWeather: string;
+}
