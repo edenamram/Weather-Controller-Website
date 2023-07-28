@@ -14,29 +14,8 @@
         </div>
     </mat-card>
 
-
-    <div class="card-container">
-        <app-detailed-weather [currentWeather]="currentWeather" [cityControl]="cityControl"></app-detailed-weather>
+    <div class="card-container" >
+        <app-detailed-weather [currentWeather]="currentWeather" [selectedCity]="selectedCity"></app-detailed-weather>
         <app-weather-cards [fiveDayForecast]="fiveDayForecast"></app-weather-cards>
-
-        <!-- <mat-card class="five-day-forecast-card center">
-            <mat-card-content>
-                <h2>Five-Day Forecast</h2>
-                <div class="five-day-forecast-container">
-                    <mat-card *ngFor="let forecast of fiveDayForecast" class="weather-card center">
-                        <mat-card-header>
-                            <div class="weather-date">{{ forecast.Date | date:'EEEE' }}</div>
-                        </mat-card-header>
-                        <mat-card-content>
-                            <div>Temperature: {{ forecast.Temperature.Minimum.Value }}°C - {{
-                                forecast.Temperature.Maximum.Value
-                                }}°C</div>
-                            <div>Day: {{ forecast.Day.IconPhrase }}</div>
-                            <div>Night: {{ forecast.Night.IconPhrase }}</div>
-                        </mat-card-content>
-                    </mat-card>
-                </div>
-            </mat-card-content>
-        </mat-card> -->
     </div>
 </div>

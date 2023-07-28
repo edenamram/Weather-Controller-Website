@@ -16,8 +16,7 @@ export class MainScreenComponent implements OnInit {
   cityControl = new FormControl();
   filteredCities!: Observable<any[]>;
   dateNameToday: string = '';
-  loading: boolean = false;
-  showSearchForm: boolean = false;
+  selectedCity: string = '';
 
   constructor(private weatherService: WeatherService,
     private snackBar: MatSnackBar,
@@ -29,7 +28,7 @@ export class MainScreenComponent implements OnInit {
   }
 
   setupAutocomplete() {
-   this.filteredCities = this.cityControl.valueChanges.pipe(
+    this.filteredCities = this.cityControl.valueChanges.pipe(
       filter(res => res !== null && res.trim() !== ''),
       distinctUntilChanged(),
       debounceTime(1000),
@@ -63,7 +62,6 @@ export class MainScreenComponent implements OnInit {
             this.weatherService.getCurrentWeather(locationKey).subscribe(
               (weatherData: any) => {
                 this.currentWeather = weatherData[0];
-                this.showSearchForm = false;
               }
             );
             this.weatherService.getFiveDayForecast(locationKey).subscribe(
@@ -71,6 +69,8 @@ export class MainScreenComponent implements OnInit {
                 this.fiveDayForecast = forecastData.DailyForecasts;
               }
             );
+            this.selectedCity = data[0];
+            this.cityControl.setValue(data[0]);
           } else {
             this.showSnackbar('Location not found. Please try again.');
           }

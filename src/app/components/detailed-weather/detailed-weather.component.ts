@@ -7,10 +7,10 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class DetailedWeatherComponent implements OnInit {
 
-  dateNameToday: string = '';
   @Input() currentWeather: any;
-  @Input() cityControl: any;
-
+  @Input() selectedCity: any;
+  isFavorite: boolean = false;
+  dateNameToday: string = '';
   constructor() { }
 
   ngOnInit(): void {
@@ -20,6 +20,12 @@ export class DetailedWeatherComponent implements OnInit {
   getDayName(date = new Date(), locale = 'en-US') {
     this.dateNameToday = date.toLocaleDateString(locale, { weekday: 'long' });
   }
+
+  toggleFavorite(): void {
+    this.isFavorite = !this.isFavorite;
+  }
+
+
 
   getBackgroundImageUrl(): string {
     const currentTime = new Date().getHours();

@@ -3,13 +3,14 @@
     <mat-card-header>
         <mat-card-title>{{dateNameToday}}</mat-card-title>
         <mat-card-subtitle>{{ currentWeather.LocalObservationDateTime | date:'dd MMM yyyy' }}</mat-card-subtitle>
-        <mat-card-subtitle>{{cityControl.value}}</mat-card-subtitle>
+        <mat-card-subtitle>{{selectedCity}}</mat-card-subtitle>
         <div class="flex-row">
             <div class="temp">
                 <span class="big-text">{{currentWeather.Temperature.Metric.Value}}°C</span>
             </div>
             <div class="outlook">
                 <span>{{currentWeather.WeatherText}}</span>
+                <mat-icon [ngStyle]="{'color': isFavorite ? 'red' : '' }" (click)="toggleFavorite()">favorite</mat-icon>
             </div>
         </div>
     </mat-card-header>
