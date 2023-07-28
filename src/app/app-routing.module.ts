@@ -5,8 +5,7 @@ import { MainScreenComponent } from './components/main-screen/main-screen.compon
 
 const routes: Routes = [
   { path: 'favorites', component: FavoritesComponent },
-  { path: 'weather-details', component: MainScreenComponent },
-];
+  { path: 'main-screen/:cityName', component: MainScreenComponent }];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

@@ -2,7 +2,7 @@
     <div class="page-container favorite">
         <mat-icon class=" favorite-icon-btn">favorite_border</mat-icon>
         <h2>Your Wishlist is empty!</h2>
-        <button class="multiColorButton btn" mat-button [routerLink]="['/weather-details']">Start</button>
+        <button class="multiColorButton btn" mat-button [routerLink]="['/main-screen','tel aviv']">Start</button>
     </div>
 </ng-container>
 <ng-template #showTable>
@@ -37,7 +37,7 @@
             </ng-container>
 
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="navigateToMainScreen(row.name)"></tr>
         </table>
     </div>
 </ng-template>

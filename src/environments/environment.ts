@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  apiKey: "WprZoXfpkVV04S0xk1zak079GUH6kXC0",
-  // apiKey: "dYpiSdpQTAyAPfp8PpAnJJWv2jH4nWXy",
+  // apiKey: "WprZoXfpkVV04S0xk1zak079GUH6kXC0",
+  apiKey: "dYpiSdpQTAyAPfp8PpAnJJWv2jH4nWXy",
   getIp: "https://ipinfo.io/?token=8c6c14d38f69f6"
 };
 

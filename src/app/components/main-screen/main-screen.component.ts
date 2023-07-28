@@ -4,6 +4,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { FormControl } from '@angular/forms';
 import { Observable, debounceTime, distinctUntilChanged, filter, map, switchMap } from 'rxjs';
 import { IpInfoService } from 'src/app/services/ip-info.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-main-screen',
@@ -16,11 +17,13 @@ export class MainScreenComponent implements OnInit {
   cityControl = new FormControl();
   filteredCities!: Observable<any[]>;
   dateNameToday: string = '';
-  selectedCity: string = '';
+  cityName: string = '';
 
   constructor(private weatherService: WeatherService,
     private snackBar: MatSnackBar,
-    private ipInfoService: IpInfoService) { }
+    private ipInfoService: IpInfoService,
+    private route: ActivatedRoute,
+    private router: Router) { }
 
   ngOnInit(): void {
     this.checkIpInfo();
@@ -41,8 +44,15 @@ export class MainScreenComponent implements OnInit {
   checkIpInfo() {
     this.ipInfoService.getIpInfo().subscribe(
       (data: any) => {
-        this.cityControl.setValue(data.city);
-        this.searchWeather();
+        this.route.params.subscribe(params => {
+          if (params['cityName'] == data.city) {
+            this.cityName = data.city;
+          } else {
+            this.cityName = params['cityName'];
+          }
+          this.cityControl.setValue(this.cityName);
+          this.searchWeather();
+        });
       },
       (error) => {
         this.cityControl.setValue('Tel Aviv');
@@ -52,7 +62,7 @@ export class MainScreenComponent implements OnInit {
   }
 
 
-  searchWeather(): void {
+   searchWeather(): void {
     const selectedCity = this.cityControl.value;
     if (selectedCity.trim() !== '') {
       this.weatherService.getAutoComplete(selectedCity).subscribe(
@@ -69,8 +79,11 @@ export class MainScreenComponent implements OnInit {
                 this.fiveDayForecast = forecastData.DailyForecasts;
               }
             );
-            this.selectedCity = data[0];
-            this.cityControl.setValue(data[0]);
+
+            this.cityName = data[0].LocalizedName;
+            this.cityControl.setValue(data[0].LocalizedName);
+
+            this.router.navigate(['./'], { relativeTo: this.route, queryParams: { cityName: this.cityName } });
           } else {
             this.showSnackbar('Location not found. Please try again.');
           }
