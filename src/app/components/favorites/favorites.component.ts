@@ -9,6 +9,7 @@ import { WishlistService } from 'src/app/services/wishlist.service';
   styleUrls: ['./favorites.component.scss']
 })
 export class FavoritesComponent implements OnInit {
+  wishlistEmpty: boolean = true;
   favoritesData: MatTableDataSource<IWishlistItem> = new MatTableDataSource<IWishlistItem>([]);
   tableHeaders: IWishlistItem = { id: "Id", name: "Name City", currentWeather: "Current Weather", tempWeather: "Temperature (°C)" };
   public displayedColumns: any[] = [...Object.keys(this.tableHeaders), 'actions'];
@@ -21,7 +22,12 @@ export class FavoritesComponent implements OnInit {
 
   refreshTableData(): void {
     this.wishlistService.getAllItems().subscribe((data: IWishlistItem[]) => {
-      this.favoritesData.data = data;
+      if (data.length > 0) {
+        this.wishlistEmpty = false;
+        this.favoritesData.data = data;
+      }else{
+        this.wishlistEmpty = true;
+      }
     });
   }
 
