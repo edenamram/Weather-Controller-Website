@@ -39,12 +39,12 @@ h1 {
     width: 60%;
 }
 
-app-detailed-weather{
+app-detailed-weather {
     width: inherit;
 }
 
 .page-container {
-  overflow-x: hidden;
+    overflow-x: hidden;
 }
 
 @media screen and (max-width: 767px) {
@@ -70,6 +70,14 @@ app-detailed-weather{
 
     .search-field {
         font-size: 14px;
+    }
+
+    .card-container {
+        flex-direction: column;
+    }
+
+    app-detailed-weather {
+        width: 100%;
     }
 
 }
