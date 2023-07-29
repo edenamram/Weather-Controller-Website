@@ -6,7 +6,7 @@
         <mat-card-subtitle>{{selectedCity}}</mat-card-subtitle>
         <div class="flex-row">
             <div class="temp">
-                <span class="big-text">{{ currentWeather.Temperature.Metric.Value | temperatureConversion: unit }}°{{ unit }}</span>
+                <span class="big-text">{{ currentWeather.Temperature.Metric.Value | convertTemp }}</span>
             </div>
             <div class="outlook">
                 <span>{{currentWeather.WeatherText}}</span>

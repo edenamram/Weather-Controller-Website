@@ -1,21 +1,15 @@
 import { Pipe, PipeTransform } from '@angular/core';
+import { SettingsService } from '../services/settings.service';
 
 @Pipe({
-  name: 'temperatureConversion'
+  name: 'convertTemp',
+  pure : false
 })
 export class TemperatureConversionPipe implements PipeTransform {
-  transform(value: number, unit: string): string {
-    if (unit ==='') {
-      return value.toString();
-    }
+  constructor(private settingsService : SettingsService){
+  }
 
-    if (unit === 'C') {
-      const celsiusValue = (value - 32) * (5 / 9);
-      return celsiusValue.toFixed(1);
-    } else if (unit === 'F') {
-      const fahrenheitValue = (value * 9) / 5 + 32;
-      return fahrenheitValue.toFixed(1);
-    }
-    return value.toFixed(1);
+  transform(value: number): string {    
+    return this.settingsService.tranformTemperature(value);    
   }
 }

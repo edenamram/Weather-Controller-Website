@@ -7,7 +7,7 @@
           <div class="weather-date">{{ forecast.Date | date:'EEEE' }}</div>
         </mat-card-header>
         <mat-card-content>
-          <div>{{ forecast.Temperature.Minimum.Value }}°C - {{ forecast.Temperature.Maximum.Value }}°C</div>
+          <div>{{ forecast.Temperature.Minimum.Value | convertTemp}} - {{ forecast.Temperature.Maximum.Value | convertTemp}}</div>
           <div>Day: {{ forecast.Day.IconPhrase }}</div>
           <div>Night: {{ forecast.Night.IconPhrase }}</div>
         </mat-card-content>

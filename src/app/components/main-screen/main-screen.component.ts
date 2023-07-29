@@ -5,6 +5,8 @@ import { FormControl } from '@angular/forms';
 import { Observable, debounceTime, distinctUntilChanged, filter, map, switchMap } from 'rxjs';
 import { IpInfoService } from 'src/app/services/ip-info.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { SettingsService } from 'src/app/services/settings.service';
+
 
 @Component({
   selector: 'app-main-screen',
@@ -23,17 +25,19 @@ export class MainScreenComponent implements OnInit {
   constructor(private weatherService: WeatherService,
     private snackBar: MatSnackBar,
     private ipInfoService: IpInfoService,
+    private settingsService : SettingsService,
     private route: ActivatedRoute,
     private router: Router) { }
 
   ngOnInit(): void {
+    this.initializeUnit();
     this.checkIpInfo();
-    this.setupAutocomplete();
-  }
+    this.setupAutocomplete();    
+  }  
 
   setupAutocomplete() {
     this.filteredCities = this.cityControl.valueChanges.pipe(
-      filter(res => res !== null && res.trim() !== ''),
+      filter(res => res !== null && res?.trim() !== ''),
       distinctUntilChanged(),
       debounceTime(1000),
       switchMap(value => this.weatherService.getAutoComplete(value.toLowerCase()).pipe(
@@ -98,11 +102,13 @@ export class MainScreenComponent implements OnInit {
     }
   }
 
-  toggleUnit() {
-    this.unit = this.unit === 'C' ? 'F' : 'C';
+  initializeUnit() {
+    this.unit = this.settingsService.getTemperatureUnit();
   }
 
-
+  toggleUnit() {
+    this.unit = this.settingsService.changeTempUnit(this.unit);
+  }
 
   private showSnackbar(message: string) {
     this.snackBar.open(message, 'Close', {

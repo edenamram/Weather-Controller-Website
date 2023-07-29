@@ -11,7 +11,6 @@ export class DetailedWeatherComponent implements OnInit {
 
   @Input() currentWeather: any;
   @Input() selectedCity: any;
-  @Input() unit: string = '';
   isFavorite: boolean = false;
   dateNameToday: string = '';
 
@@ -42,9 +41,6 @@ export class DetailedWeatherComponent implements OnInit {
   ngOnChanges(changes: SimpleChanges): void {
     if(changes['currentWeather']){
       this.isFavorite= false;
-    }
-    if (changes['unit']) {
-      this.unit = changes['unit'].currentValue;
     }
   }
 

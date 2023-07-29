@@ -45,3 +45,10 @@
     overflow-x: auto;
   }
   
+  .matTable tr {
+    cursor: pointer;
+  }
+
+  .matTable tr.mat-row:hover{
+     background-color: #D3D3D3;
+  }
