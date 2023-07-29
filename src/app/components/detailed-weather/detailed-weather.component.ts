@@ -14,13 +14,10 @@ export class DetailedWeatherComponent implements OnInit {
   @Input() unit: string = '';
   isFavorite: boolean = false;
   dateNameToday: string = '';
-  temperature: number = 30;
 
   constructor(private wishlistService: WishlistService) { }
 
   ngOnInit(): void {
-    // this.temperature = this.currentWeather.Temperature.Metric.Value;
-    console.log(this.unit)
     this.getDayName();
   }
 
@@ -43,6 +40,9 @@ export class DetailedWeatherComponent implements OnInit {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
+    if(changes['currentWeather']){
+      this.isFavorite= false;
+    }
     if (changes['unit']) {
       this.unit = changes['unit'].currentValue;
     }

@@ -2,7 +2,7 @@
   <mat-card-content>
     <h2>Five-Day Forecast</h2>
     <div class="five-day-forecast-container">
-      <mat-card *ngFor="let forecast of fiveDayForecast" class="weather-card center">
+      <mat-card *ngFor="let forecast of fiveDayForecast; let i = index" class="weather-card center" [ngClass]="{'first-forecast': i === 0}">
         <mat-card-header>
           <div class="weather-date">{{ forecast.Date | date:'EEEE' }}</div>
         </mat-card-header>

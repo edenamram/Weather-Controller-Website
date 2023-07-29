@@ -67,30 +67,32 @@ export class MainScreenComponent implements OnInit {
     const selectedCity = this.cityControl.value;
     if (selectedCity.trim() !== '') {
       this.weatherService.getAutoComplete(selectedCity).subscribe(
-        (data: any) => {
-          if (data.length > 0) {
-            const locationKey = data[0].Key;
-            this.weatherService.getCurrentWeather(locationKey).subscribe(
-              (weatherData: any) => {
-                this.currentWeather = weatherData[0];
-              }
-            );
-            this.weatherService.getFiveDayForecast(locationKey).subscribe(
-              (forecastData: any) => {
-                this.fiveDayForecast = forecastData.DailyForecasts;
-              }
-            );
+        {
+          next: (data: any) => {
+            if (data.length > 0) {
+              const locationKey = data[0].Key;
+              this.weatherService.getCurrentWeather(locationKey).subscribe(
+                (weatherData: any) => {
+                  this.currentWeather = weatherData[0];
+                }
+              );
+              this.weatherService.getFiveDayForecast(locationKey).subscribe(
+                (forecastData: any) => {
+                  this.fiveDayForecast = forecastData.DailyForecasts;
+                }
+              );
 
-            this.cityName = data[0].LocalizedName;
-            this.cityControl.setValue(data[0].LocalizedName);
+              this.cityName = data[0].LocalizedName;
+              this.cityControl.setValue(data[0].LocalizedName);
 
-            this.router.navigate(['./'], { relativeTo: this.route, queryParams: { cityName: this.cityName } });
-          } else {
-            this.showSnackbar('Location not found. Please try again.');
+              this.router.navigate(['./'], { relativeTo: this.route, queryParams: { cityName: this.cityName } });
+            } else {
+              this.showSnackbar('Location not found. Please try again.');
+            }
+          },
+          error: (error: any) => {
+            this.showSnackbar(error.message);
           }
-        },
-        (error) => {
-          this.showSnackbar(error.message);
         }
       );
     }
@@ -107,4 +109,6 @@ export class MainScreenComponent implements OnInit {
       duration: 5000,
     });
   }
+
+
 }
