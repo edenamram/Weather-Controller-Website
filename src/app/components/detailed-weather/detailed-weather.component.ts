@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, SimpleChanges } from '@angular/core';
 import { IWishlistItem } from 'src/app/models/IWeatherItem.models';
 import { WishlistService } from 'src/app/services/wishlist.service';
 
@@ -11,11 +11,16 @@ export class DetailedWeatherComponent implements OnInit {
 
   @Input() currentWeather: any;
   @Input() selectedCity: any;
+  @Input() unit: string = '';
   isFavorite: boolean = false;
   dateNameToday: string = '';
+  temperature: number = 30;
+
   constructor(private wishlistService: WishlistService) { }
 
   ngOnInit(): void {
+    // this.temperature = this.currentWeather.Temperature.Metric.Value;
+    console.log(this.unit)
     this.getDayName();
   }
 
@@ -34,6 +39,12 @@ export class DetailedWeatherComponent implements OnInit {
     }
     else {
       this.wishlistService.deleteItem(this.currentWeather.EpochTime)
+    }
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['unit']) {
+      this.unit = changes['unit'].currentValue;
     }
   }
 

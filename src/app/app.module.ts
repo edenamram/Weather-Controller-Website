@@ -21,6 +21,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { DetailedWeatherComponent } from './components/detailed-weather/detailed-weather.component';
 import { WeatherCardsComponent } from './components/weather-cards/weather-cards.component';
 import {MatTableModule} from '@angular/material/table';
+import { TemperatureConversionPipe } from './pipes/temperature-conversion.pipe';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import {MatTableModule} from '@angular/material/table';
     FavoritesComponent,
     MainScreenComponent,
     DetailedWeatherComponent,
-    WeatherCardsComponent
+    WeatherCardsComponent,
+    TemperatureConversionPipe
   ],
   imports: [
     BrowserModule,
@@ -51,7 +53,7 @@ import {MatTableModule} from '@angular/material/table';
     ReactiveFormsModule,
     MatTableModule
   ],
-  providers: [],
+  providers: [TemperatureConversionPipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

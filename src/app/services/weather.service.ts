@@ -224,7 +224,7 @@ export class WeatherService {
 
   getAutoComplete(q: string): Observable<any> {
 
-    // return new Observable((observer) => { observer.next(["Tel Aviv"]); });
+    return new Observable((observer) => { observer.next(["Tel Aviv"]); });
 
     const url = `${this.baseUrl}/locations/v1/cities/autocomplete`;
     return this.http.get(`${url}?apikey=${this.apiKey}&q=${q}`).pipe(
@@ -235,7 +235,7 @@ export class WeatherService {
   getCurrentWeather(locationKey: string): Observable<any> {
     const url = `${this.baseUrl}/currentconditions/v1/`
 
-    // return new Observable((observer) => { observer.next(mockData.oneday); });
+    return new Observable((observer) => { observer.next(mockData.oneday); });
 
     return this.http.get(`${url}${locationKey}?apikey=${this.apiKey}`).pipe(
       catchError(this.handleError)
@@ -245,7 +245,7 @@ export class WeatherService {
   getFiveDayForecast(locationKey: string): Observable<any> {
     const url = `${this.baseUrl}/forecasts/v1/daily/5day/`
     
-    // return new Observable((observer) => { observer.next(mockData.fivedays); });
+    return new Observable((observer) => { observer.next(mockData.fivedays); });
 
     return this.http.get(`${url}${locationKey}?apikey=${this.apiKey}&metric=true`).pipe(
       catchError(this.handleError)

@@ -18,6 +18,7 @@ export class MainScreenComponent implements OnInit {
   filteredCities!: Observable<any[]>;
   dateNameToday: string = '';
   cityName: string = '';
+  unit: string = '';
 
   constructor(private weatherService: WeatherService,
     private snackBar: MatSnackBar,
@@ -62,7 +63,7 @@ export class MainScreenComponent implements OnInit {
   }
 
 
-   searchWeather(): void {
+  searchWeather(): void {
     const selectedCity = this.cityControl.value;
     if (selectedCity.trim() !== '') {
       this.weatherService.getAutoComplete(selectedCity).subscribe(
@@ -94,6 +95,11 @@ export class MainScreenComponent implements OnInit {
       );
     }
   }
+
+  toggleUnit() {
+    this.unit = this.unit === 'C' ? 'F' : 'C';
+  }
+
 
 
   private showSnackbar(message: string) {

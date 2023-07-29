@@ -1,19 +1,17 @@
-<mat-card class="five-day-forecast-card center" *ngIf="fiveDayForecast">
-    <mat-card-content>
-        <h2>Five-Day Forecast</h2>
-        <div class="five-day-forecast-container">
-            <mat-card *ngFor="let forecast of fiveDayForecast" class="weather-card center">
-                <mat-card-header>
-                    <div class="weather-date">{{ forecast.Date | date:'EEEE' }}</div>
-                </mat-card-header>
-                <mat-card-content>
-                    <div>Temperature: {{ forecast.Temperature.Minimum.Value }}°C - {{
-                        forecast.Temperature.Maximum.Value
-                        }}°C</div>
-                    <div>Day: {{ forecast.Day.IconPhrase }}</div>
-                    <div>Night: {{ forecast.Night.IconPhrase }}</div>
-                </mat-card-content>
-            </mat-card>
-        </div>
-    </mat-card-content>
+<mat-card class="five-day-forecast-card" *ngIf="fiveDayForecast">
+  <mat-card-content>
+    <h2>Five-Day Forecast</h2>
+    <div class="five-day-forecast-container">
+      <mat-card *ngFor="let forecast of fiveDayForecast" class="weather-card center">
+        <mat-card-header>
+          <div class="weather-date">{{ forecast.Date | date:'EEEE' }}</div>
+        </mat-card-header>
+        <mat-card-content>
+          <div>{{ forecast.Temperature.Minimum.Value }}°C - {{ forecast.Temperature.Maximum.Value }}°C</div>
+          <div>Day: {{ forecast.Day.IconPhrase }}</div>
+          <div>Night: {{ forecast.Night.IconPhrase }}</div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </mat-card-content>
 </mat-card>

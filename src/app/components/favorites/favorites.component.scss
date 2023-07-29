@@ -1,27 +1,47 @@
 .favorite {
     margin-top: 5%;
-}
-
-.favorite-icon-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .favorite-icon-btn {
     font-size: 50px;
     height: 50px;
     width: 50px;
-}
-
-h1 {
+  }
+  
+  h1 {
     font-size: 30px;
     font-weight: bold;
-}
-
-table.mat-table {
-    width: 50%;
-}
-
-th {
+    margin-bottom: 20px;
+  }
+  
+  table.mat-table {
+    width: 100%;
+  }
+  
+  th {
     font-size: 16px;
     font-weight: bold;
-}
-
-.btn{
-    width: 10%;
-}
+  }
+  
+  .btn {
+    width: 100px;
+    max-width: 100%;
+    margin-top: 20px;
+  }
+  
+  .mat-card {
+    width: 80%;
+    min-height: 380px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .table-container {
+    width: 100%;
+    overflow-x: auto;
+  }
+  
