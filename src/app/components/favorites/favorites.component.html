@@ -12,10 +12,6 @@
         <mat-card>
             <div class="table-container">
                 <table mat-table [dataSource]="favoritesData" class="matTable" multiTemplateDataRows>
-                    <ng-container matColumnDef="id">
-                        <th mat-header-cell *matHeaderCellDef>{{ tableHeaders.id }}</th>
-                        <td mat-cell *matCellDef="let element">{{ element.id }}</td>
-                    </ng-container>
                     <ng-container matColumnDef="name">
                         <th mat-header-cell *matHeaderCellDef>{{ tableHeaders.name }}</th>
                         <td mat-cell *matCellDef="let element">{{ element.name }}</td>

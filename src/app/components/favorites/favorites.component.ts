@@ -12,7 +12,7 @@ import { WishlistService } from 'src/app/services/wishlist.service';
 export class FavoritesComponent implements OnInit {
   wishlistEmpty: boolean = true;
   favoritesData: MatTableDataSource<IWishlistItem> = new MatTableDataSource<IWishlistItem>([]);
-  tableHeaders: IWishlistItem = { id: "Id", name: "Name City", currentWeather: "Current Weather", tempWeather: "Temperature" };
+  tableHeaders: any = {  name: "Name City", currentWeather: "Current Weather", tempWeather: "Temperature" };
   public displayedColumns: any[] = [...Object.keys(this.tableHeaders), 'actions'];
 
   constructor(private wishlistService: WishlistService,
@@ -39,7 +39,6 @@ export class FavoritesComponent implements OnInit {
   }
 
   navigateToMainScreen(cityName: string): void {
-    // this.router.navigate(['./'], { relativeTo: this.route, queryParams: { cityName: cityName } });
     this.router.navigate(['/main-screen', cityName]);
   }
 }

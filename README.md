@@ -1,30 +1,58 @@
-# LawyalWeatherAPP
+# Angular Weather App
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.3.
+This is a simple and responsive web application built with Angular that allows users to search for the weather of a city and save their favorite cities. The app utilizes the AccuWeather API to fetch weather data, including current weather and a 5-day daily forecast.
 
-## Development server
+## Getting Started
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+To run the project locally, follow these steps:
 
-## Code scaffolding
+1. Clone the repository to your local machine:
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+git clone https://github.com/your-username/angular-weather-app.git
+cd angular-weather-app
 
-## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+2. Install the dependencies:
 
-## Running unit tests
+npm install
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-## Running end-to-end tests
+3. Get your API key from [AccuWeather API](https://developer.accuweather.com/apis) and replace `'YOUR_API_KEY'` in the `src/environments/environment.ts` file.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+4. Start the development server:
 
-## Further help
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
-# weather-web
-# weather-web
-# weather-web
+The app will be accessible at `http://localhost:4200/` in your browser.
+
+## Features
+
+The Angular Weather App has the following features:
+
+- **Weather Page**: Displays the weather details for a city, including the current weather and a 5-day forecast. The user can search for a city using the search field.
+- **Favorites Page**: Lists the user's favorite locations. Clicking on a favorite location will navigate back to the Weather Page with the details of that location.
+- **Navigation**: The app has a header with navigation icons/links/buttons for easy access to the main and favorites screens.
+- **Default Location**: The default weather displayed on the main screen is for Tel Aviv.
+- **Favorite Locations**: Each location in the Weather Page indicates whether it's already saved in favorites, and users can add/remove locations to/from favorites.
+- **Searching**: Searching for locations can be done using English letters only.
+- **Responsive Design**: The app is designed to be responsive, adapting to different screen sizes using flexbox/grid.
+- **Error Handling**: The app includes error handling using toast or modal to display error messages to users.
+
+## Bonus Features
+
+1. **Geolocation API**: The app utilizes the Geolocation API to automatically set the default location based on the user's current latitude and longitude.
+2. **Celsius/Fahrenheit Toggle**: The app has a toggle button to switch between Celsius and Fahrenheit units for temperature display.
+## Notes
+
+- Make sure to replace `'YOUR_API_KEY'` in the `src/environments/environment.ts` file with your actual AccuWeather API key.
+- The app saves the user's favorite locations locally on their browser. No server-side storage is implemented.
+- The app uses local storage to store favorites and caches API responses to minimize requests during development.
+- The app is built with a focus on readability and maintainability. Logical project structure and code separation are followed.
+
+## Authors
+
+- Eden Amaram
+- Email: amram167@gmail.com
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.

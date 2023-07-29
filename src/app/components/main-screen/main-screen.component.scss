@@ -10,10 +10,12 @@
 
 .search-container {
     width: 100%;
-    max-width: 500px;
+    // max-width: 500px;
+    max-width: 600px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding-right: 16px;
 }
 
 .search-field {
@@ -60,16 +62,17 @@ app-detailed-weather {
     .search-container {
         flex-direction: column;
         align-items: stretch;
-        margin-bottom: 20px !important;
+        margin-bottom: 5%;
+        padding-left: 5%;
     }
 
     h1 {
-        padding-left: 18px;
         font-size: 18px;
     }
 
     .search-field {
         font-size: 14px;
+        padding-left: 0%;
     }
 
     .card-container {
@@ -78,6 +81,14 @@ app-detailed-weather {
 
     app-detailed-weather {
         width: 100%;
+    }
+
+    .header-container {
+        align-items: flex-start;
+    }
+
+    .multiColorButton {
+        width: 30%;
     }
 
 }
